@@ -4,11 +4,9 @@ import modernBackend from "@/assets/modern-backend.svg";
 import aiCompanion from "@/assets/ai-companion.svg";
 import reactGsap from "@/assets/react-gsap.svg";
 import abdeldjallil from "@/assets/abd-eldjallil.jpg";
-// import mouad from "@/assets/mouad.jpg";
+import mouad from "@/assets/mouad.jpg";
 import gbemisola from "@/assets/gbemisola.jpg";
 import pic from "@/assets/pic.png"
-
-const mouad = pic;
 
 const data: workshopType[] = [
   {
