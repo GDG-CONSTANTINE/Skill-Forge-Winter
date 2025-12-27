@@ -4,11 +4,9 @@ import modernBackend from "@/assets/modern-backend.svg";
 import aiCompanion from "@/assets/ai-companion.svg";
 import reactGsap from "@/assets/react-gsap.svg";
 import abdeldjallil from "@/assets/abd-eldjallil.jpg";
-// import mouad from "@/assets/mouad.jpg";
+import mouad from "@/assets/mouad.jpg";
 import gbemisola from "@/assets/gbemisola.jpg";
 import pic from "@/assets/pic.png"
-
-const mouad = pic;
 
 const data: workshopType[] = [
   {
@@ -25,6 +23,7 @@ const data: workshopType[] = [
       bio: "Web Developer | UI/UX Designer",
       photo: abdeldjallil,
     },
+    workshopResourcesLink: "git-workshop.rar"
   },
 
   {
@@ -62,7 +61,7 @@ const data: workshopType[] = [
     title: "Build Your First AI Companion",
     description:
       "Go beyond basic chatbots and build your first interactive AI companion with personality, real-time web access, and lip-synced speech using Google Gemini CLI and Python (ADK).",
-    date: "2024-01-03",
+    date: "2026-01-03",
     time: "10:00 PM - 9:30 PM",
     location: "Online, Google Meet",
     logo: aiCompanion,

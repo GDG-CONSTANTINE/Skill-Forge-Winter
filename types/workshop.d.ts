@@ -11,4 +11,5 @@ export type workshopType = {
     bio: string;
     photo: StaticImageData | string;
   };
+  workshopResourcesLink?: string;
 };
