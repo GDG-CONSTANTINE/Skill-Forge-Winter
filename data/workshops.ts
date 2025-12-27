@@ -25,6 +25,7 @@ const data: workshopType[] = [
       bio: "Web Developer | UI/UX Designer",
       photo: abdeldjallil,
     },
+    workshopResourcesLink: "git-workshop.rar"
   },
 
   {
