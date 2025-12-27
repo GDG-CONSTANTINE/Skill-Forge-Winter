@@ -1,4 +1,8 @@
-const data = [
+import { workshopType } from '@/types/workshop';
+import gitGithub from '@/assets/git-github.svg'
+import abdeldjallil from '@/assets/abd-eldjallil.jpg'
+
+const data: workshopType[] = [
   {
     id: 'workshop-1',
     title: 'Git and GitHub',
@@ -7,10 +11,11 @@ const data = [
     date: '2025-12-29',
     time: '1:00 PM - 3:00 PM',
     location: 'Socode School, Constantine',
+    logo: gitGithub,
     instructor: {
       name: 'Abd eldjallil Meskali',
       bio: 'Web Developer | UI/UX Designer',
-      photo: '/instructors/abd-eldjallil-meskali.jpg',
+      photo: abdeldjallil,
     },
   },
   // {
