@@ -1,38 +1,21 @@
-import { Button } from "@/components/ui/button"
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { workshopType } from "@/types/workshop";
+import Header from "./header";
+import RegistrationForm from "./form";
 
-function SessionDialog({ children, session }: { children: React.ReactNode; session: any }) {
+function SessionDialog({ children, session }: { children: React.ReactNode; session: workshopType }) {
   return (
     <Dialog>
-      <DialogTrigger className="w-full">
+      <DialogTrigger asChild className="w-full">
         {children}
       </DialogTrigger>
       <DialogContent>
-        <DialogHeader>
-          <DialogTitle className="text-3xl font-bold mb-4 text-primary">{session.title} <span className="text-foreground/70">Workshop</span>
-          </DialogTitle>
-          <DialogDescription>{session.description}
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <Button asChild>
-            <a href={session.link} target="_blank" rel="noopener noreferrer">
-              Join Session
-            </a>
-          </Button>
-          <DialogClose asChild>
-            <Button variant="outline">Close</Button>
-          </DialogClose>
-        </DialogFooter>
+        <Header session={session} />
+        <RegistrationForm />
       </DialogContent>
     </Dialog>
   )
