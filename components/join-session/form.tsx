@@ -19,6 +19,7 @@ import useRegister from "@/hooks/useRegister"
 import { DialogClose } from "../ui/dialog"
 import emailSendingHandler from "@/services/emailHandler"
 import { workshopType } from "@/types/workshop"
+import { useWorkshopState } from "@/store/workshopStore"
 
 /* -------------------------------------------------------------------------- */
 /*                                   Schema                                   */
@@ -81,9 +82,12 @@ function RegistrationForm({ setOpen, workshop }: { workshop: workshopType, setOp
     },
   })
 
-  const { mutate: register, isPending } = useRegister()
+  const { mutate: register, isPending  } = useRegister()
+  const [extraWorkPending, setExtraWorkPending] = useState(false)
+  const { joinWorkshop } = useWorkshopState();
 
   function onSubmit(values: FormValues) {
+    setExtraWorkPending(true)
     register(values, {
       onSuccess: async () => {
         // before resetting the form send email
@@ -93,8 +97,11 @@ function RegistrationForm({ setOpen, workshop }: { workshop: workshopType, setOp
           workshopTitle: workshop.title,
           workshopDate: workshop.date,
         })
-
+        // update the count locally
+        joinWorkshop(values.workshopId)
+        
         setIsRegistered(true)
+        setExtraWorkPending(false)
         // reset form
         form.reset()
         if (setOpen) {
@@ -224,8 +231,8 @@ function RegistrationForm({ setOpen, workshop }: { workshop: workshopType, setOp
         />
 
         {/* Submit */}
-        <Button type="submit" className="w-full" disabled={isPending}>
-          {isPending ? (
+        <Button type="submit" className="w-full" disabled={isPending || extraWorkPending}>
+          {isPending || extraWorkPending ? (
             <div className="flex items-center gap-2">
               <Loader className="size-5 animate-spin" />
               Registering...

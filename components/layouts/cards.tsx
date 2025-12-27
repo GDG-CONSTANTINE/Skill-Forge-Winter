@@ -1,12 +1,29 @@
 import { default as workshops } from "@/data/workshops"
 import { Button } from "../ui/button"
 import SessionDialog from "../join-session/session-dialog"
+import { useWorkshopState } from "@/store/workshopStore";
 
 function Cards() {
+  // fetch count
+  const { workshopsCount } = useWorkshopState();
+
+  const getWorkshopState = (workshopId: string) => {
+    console.log(workshopsCount)
+    const targetWorkshop = workshopsCount.find((item) => item.workshopId === workshopId)
+    // in case the workshop doesn't have any applying yet
+    if (!targetWorkshop)
+      return 0
+
+    return targetWorkshop.count
+  }
+
   return (
     <div className="w-full mt-10">
-      {workshops.map((workshop) => (
-        <div key={workshop.id} className="mb-8 p-6 border-3 border-foreground/70 bg-white shadow-sm w-full relative">
+      {workshops.map((workshop) => {
+        const workshopAvailable = getWorkshopState(workshop.id) < 30;
+
+        // Component
+        return (<div key={workshop.id} className="mb-8 p-6 border-3 border-foreground/70 bg-white shadow-sm w-full relative">
           {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position) => (
             <div
               key={position}
@@ -24,12 +41,18 @@ function Cards() {
             <p><strong>Location:</strong><br /> {workshop.location}</p>
           </div>
           <SessionDialog session={workshop}>
-            <Button className="mt-4 w-full cursor-pointer">
-              Join Session
+            <Button
+              disabled={!workshopAvailable}
+              className="mt-4 w-full cursor-pointer">
+              {
+                workshopAvailable
+                  ? `Join Session ${getWorkshopState(workshop.id)}/30`
+                  : "Sorry Workshop is Full"
+              }
             </Button>
           </SessionDialog>
-        </div>
-      ))}
+        </div>)
+      })}
     </div>
   )
 }

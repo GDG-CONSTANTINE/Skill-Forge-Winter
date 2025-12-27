@@ -1,18 +1,33 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongodb'; 
+import { NextRequest, NextResponse } from "next/server";
+import { connectToDatabase } from "@/lib/mongodb";
 
-export async function POST(request: NextRequest) {
+async function POST(request: NextRequest) {
   let client;
   try {
     // Connect to MongoDB
     client = await connectToDatabase();
-    if(client === null) return NextResponse.json({ error: 'Failed to connect to MongoDB' }, { status: 500 });
+    if (client === null)
+      return NextResponse.json(
+        { error: "Failed to connect to MongoDB" },
+        { status: 500 }
+      );
 
-    const db = client.db('registrationsdb');
-    const registrationsCollection = db.collection('registrations');
+    const db = client.db("registrationsdb");
+    const registrationsCollection = db.collection("registrations");
 
-    // Parse JSON body
+    //* Parse JSON body
     const data = await request.json();
+    //* check if there's place left in the workshop
+    const workshopJoiningCount = await registrationsCollection.countDocuments({
+      workshopId: data.workshopId,
+    });
+
+    if (workshopJoiningCount >= 30) {
+      return NextResponse.json(
+        { error: "No more places left in the workshop" },
+        { status: 400 }
+      );
+    }
 
     // Validate required fields
     if (
@@ -28,7 +43,7 @@ export async function POST(request: NextRequest) {
       data.prvExperience.length < 2
     ) {
       return NextResponse.json(
-        { error: 'Invalid form data. Please check all fields.' },
+        { error: "Invalid form data. Please check all fields." },
         { status: 400 }
       );
     }
@@ -40,23 +55,76 @@ export async function POST(request: NextRequest) {
       updatedAt: new Date(),
     };
 
-    // Insert new document 
+    // Insert new document
     const result = await registrationsCollection.insertOne(docData);
     const insertedId = result.insertedId.toString();
 
     return NextResponse.json(
-      { 
-        success: true, 
-        id: insertedId, 
-        message: 'Registration created successfully' 
+      {
+        success: true,
+        id: insertedId,
+        message: "Registration created successfully",
       },
       { status: 201 }
     );
   } catch (error) {
-    console.error('Error creating registration:', error);
+    console.error("Error creating registration:", error);
     return NextResponse.json(
-      { error: 'Failed to create registration' },
+      { error: "Failed to create registration" },
       { status: 500 }
     );
-  } 
+  }
 }
+
+async function GET(request: NextRequest) {
+  let client;
+  try {
+    // Connect to MongoDB
+    client = await connectToDatabase();
+    if (client === null)
+      return NextResponse.json(
+        { error: "Failed to connect to MongoDB" },
+        { status: 500 }
+      );
+
+    const db = client.db("registrationsdb");
+    const registrationsCollection = db.collection("registrations");
+
+    const countDocs = registrationsCollection.aggregate([
+      {
+        $group: {
+          _id: "$workshopId",
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $sort: { count: -1 },
+      },
+      {
+        $project: {
+          _id: 0,
+          workshopId: "$_id",
+          count: 1,
+        },
+      },
+    ]);
+
+    const count = await countDocs.toArray();
+    return NextResponse.json(
+      {
+        success: true,
+        data: count,
+        message: "Registration fetch successfully",
+      },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("Error fetching registrations count:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch registration count" },
+      { status: 500 }
+    );
+  }
+}
+
+export { POST, GET };
