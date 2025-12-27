@@ -61,7 +61,7 @@ const data: workshopType[] = [
     title: "Build Your First AI Companion",
     description:
       "Go beyond basic chatbots and build your first interactive AI companion with personality, real-time web access, and lip-synced speech using Google Gemini CLI and Python (ADK).",
-    date: "2024-01-03",
+    date: "2026-01-03",
     time: "10:00 PM - 9:30 PM",
     location: "Online, Google Meet",
     logo: aiCompanion,
