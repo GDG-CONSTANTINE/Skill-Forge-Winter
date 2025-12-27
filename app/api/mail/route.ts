@@ -11,7 +11,7 @@ export async function POST(request: Request) {
   const email = {
     from: `GDG constantine <${process.env.SMTP_USER}>`,
     to: receiverEmail,
-    subject: "Update About Hackathon Team Creation",
+    subject: "WorkShop Registration Confirmation",
     html: emailBody({ fullname, workshopTitle, workshopDate }),
     headers: {
       "X-Entity-Ref-ID": "newmail",
