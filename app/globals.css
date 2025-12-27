@@ -142,3 +142,49 @@
       );
   }
 }
+
+
+/* Scroll bar */
+/* Hide scrollbar buttons (up/down arrows) - WebKit only */
+::-webkit-scrollbar-button {
+  display: none !important; /* Added !important for stronger enforcement */
+}
+
+/* Base scrollbar dimensions */
+::-webkit-scrollbar {
+  width: 10px; /* Vertical width */
+  height: 4px; /* Horizontal height */
+  padding-top: 40px;
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  padding-top: 80px;
+  background: #f1f1f1; /* Light theme: Soft white-gray */
+  border-radius: 0; /* Square overall */
+}
+
+/* Thumb (moving part) - Square and theme-blended */
+::-webkit-scrollbar-thumb {
+  background: #e2e2e2; /* Light: Neutral mid-gray (blends with white) */
+  border-radius: 0; /* Square edges */
+  border: 1px solid #f1f1f1; /* Subtle border for definition */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8; /* Light hover: Slightly darker gray */
+}
+
+/* Dark mode overrides */
+.dark ::-webkit-scrollbar-track {
+  background: #2a2a2a; /* Dark: Deep black-gray */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a4a4a; /* Dark: Muted dark-gray (blends with black) */
+  border: 1px solid #2a2a2a;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a; /* Dark hover: Lighter gray for contrast */
+}

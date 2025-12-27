@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -18,6 +17,8 @@ import {
 import { Input } from "@/components/ui/input"
 import useRegister from "@/hooks/useRegister"
 import { DialogClose } from "../ui/dialog"
+import emailSendingHandler from "@/services/emailHandler"
+import { workshopType } from "@/types/workshop"
 
 /* -------------------------------------------------------------------------- */
 /*                                   Schema                                   */
@@ -58,7 +59,7 @@ const experienceOptions = [
 /*                              Registration Form                              */
 /* -------------------------------------------------------------------------- */
 
-function RegistrationForm({ setOpen }: { setOpen?: (open: boolean) => void }) {
+function RegistrationForm({ setOpen, workshop }: { workshop: workshopType, setOpen?: (open: boolean) => void }) {
   const [isRegistered, setIsRegistered] = useState(false)
 
   const form = useForm<FormValues>({
@@ -76,10 +77,18 @@ function RegistrationForm({ setOpen }: { setOpen?: (open: boolean) => void }) {
 
   function onSubmit(values: FormValues) {
     register(values, {
-      onSuccess: () => {
-        setIsRegistered(true)
-        form.reset()
+      onSuccess: async () => {
+        // before resetting the form send email
+        await emailSendingHandler({
+          email: values.email,
+          fullname: values.fullname,
+          workshopTitle: workshop.title,
+          workshopDate: workshop.date,
+        })
 
+        setIsRegistered(true)
+        // reset form
+        form.reset()
         if (setOpen) {
           setTimeout(() => setOpen(false), 1500)
         }
