@@ -40,6 +40,12 @@ const formSchema = z.object({
   prvExperience: z.string().min(2, {
     message: "Please select your experience level.",
   }),
+  workshopTitle: z.string().min(2, {
+    message: "Workshop title must be at least 2 characters.",
+  }),
+  workshopId: z.string().min(2, {
+    message: "Workshop title must be at least 2 characters.",
+  })
 })
 
 export type FormValues = z.infer<typeof formSchema>
@@ -70,6 +76,8 @@ function RegistrationForm({ setOpen, workshop }: { workshop: workshopType, setOp
       phone: "",
       univ: "",
       prvExperience: "none",
+      workshopTitle: workshop.title,
+      workshopId: workshop.id
     },
   })
 
