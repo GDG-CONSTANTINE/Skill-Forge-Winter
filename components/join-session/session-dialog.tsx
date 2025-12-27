@@ -13,8 +13,8 @@ function SessionDialog({ children, session }: { children: React.ReactNode; sessi
       <DialogTrigger asChild className="w-full">
         {children}
       </DialogTrigger>
-      //* Need That or else small screens will not be able to scroll
-      <DialogContent className="overflow-y-scroll rounded-md h-full">
+      {/* Need That or else small screens will not be able to scroll */}
+      <DialogContent className="overflow-y-scroll rounded-md max-sm:h-full">
         <Header session={session} />
         <RegistrationForm workshop={session} />
       </DialogContent>
