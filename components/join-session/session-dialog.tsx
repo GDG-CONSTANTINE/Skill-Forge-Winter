@@ -13,7 +13,7 @@ function SessionDialog({ children, session }: { children: React.ReactNode; sessi
       <DialogTrigger asChild className="w-full">
         {children}
       </DialogTrigger>
-      <DialogContent className="overflow-y-scroll h-full rounded-none">
+      <DialogContent className="overflow-y-scroll rounded-md">
         <Header session={session} />
         <RegistrationForm workshop={session} />
       </DialogContent>
