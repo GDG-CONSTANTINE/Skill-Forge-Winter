@@ -30,19 +30,18 @@ function SessionDialog({
       <DialogContent className="overflow-y-scroll rounded-md max-h-full">
         <Header session={session} />
 
-        {!started || workshopAvailable ? (
+        {(!started && workshopAvailable) ? (
           <RegistrationForm workshop={session} />
         ) : (
-          !started ?
+          !started ? (
             <div className="mt-6 space-y-4 text-center text-sm opacity-70">
               <p>Registration is closed. This session is full.</p>
             </div>
-            :
+          ) : (
             <div className="mt-6 space-y-4 text-center text-sm opacity-70">
               <p>Registration is closed. This session has already started.</p>
 
-
-              {(session.workshopResourcesLink) && (
+              {session.workshopResourcesLink && (
                 <Button className="w-full">
                   <a
                     href={`/${session.workshopResourcesLink}`}
@@ -54,6 +53,7 @@ function SessionDialog({
                 </Button>
               )}
             </div>
+          )
         )}
       </DialogContent>
 
