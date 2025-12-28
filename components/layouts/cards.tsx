@@ -9,7 +9,7 @@ function Cards() {
   return (
     <div className="w-full mt-10">
       {workshops.map((workshop) => {
-        const workshopAvailable = getWorkshopState(workshop.id) < 30;
+        const workshopAvailable = getWorkshopState(workshop.id) < 25;
 
         // Component
         return (<div key={workshop.id} className="mb-8 p-6 border-3 border-foreground/70 bg-white shadow-sm w-full relative">
@@ -34,7 +34,7 @@ function Cards() {
               className="mt-4 w-full cursor-pointer">
               {
                 workshopAvailable
-                  ? `Join Session ${getWorkshopState(workshop.id)}/30`
+                  ? `Join Session ${getWorkshopState(workshop.id)}/25`
                   : "Sorry Workshop is Full"
               }
             </Button>

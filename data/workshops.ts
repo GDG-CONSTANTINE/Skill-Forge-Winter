@@ -74,21 +74,6 @@ const data: workshopType[] = [
     },
   },
   {
-    id: "workshop-5",
-    title: "Build Your First AI Companion",
-    description:
-      "Go beyond basic chatbots and build your first interactive AI companion with personality, real-time web access, and lip-synced speech using Google Gemini CLI and Python (ADK).",
-    date: "2026-01-03",
-    time: "10:00 PM - 9:30 PM",
-    location: "Online, Google Meet",
-    logo: aiCompanion,
-    instructor: {
-      name: "Gbemisola Esho",
-      bio: "Founder Connectobridge | Cloud Security Engineer | Google Developer Expert Cloud (GDE)",
-      photo: gbemisola,
-    },
-  },
-  {
     id: "workshop-6",
     title: "Explainable AI in Healthcare",
     description:
