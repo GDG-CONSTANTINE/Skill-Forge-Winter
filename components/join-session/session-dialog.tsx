@@ -7,12 +7,8 @@ import { workshopType } from "@/types/workshop";
 import Header from "./header";
 import RegistrationForm from "./form";
 import { Button } from "../ui/button";
-
-function hasSessionStarted(date: string, time: string) {
-  const startTime = time.split("-")[0].trim();
-  const sessionStart = new Date(`${date} ${startTime}`);
-  return new Date() >= sessionStart;
-}
+import { hasSessionStarted } from "@/lib/helper";
+import useGetWorkshopState from "@/hooks/useGetWorkshopState";
 
 function SessionDialog({
   children,
@@ -22,6 +18,8 @@ function SessionDialog({
   session: workshopType;
 }) {
   const started = hasSessionStarted(session.date, session.time);
+  const { getWorkshopState } = useGetWorkshopState()
+  const workshopAvailable = getWorkshopState(session.id) < 30;
 
   return (
     <Dialog>
@@ -32,24 +30,30 @@ function SessionDialog({
       <DialogContent className="overflow-y-scroll rounded-md max-xl:h-full">
         <Header session={session} />
 
-        {!started ? (
+        {!started && workshopAvailable ? (
           <RegistrationForm workshop={session} />
         ) : (
-          <div className="mt-6 space-y-4 text-center text-sm opacity-70">
-            <p>Registration is closed. This session has already started.</p>
+          !started ?
+            <div className="mt-6 space-y-4 text-center text-sm opacity-70">
+              <p>Registration is closed. This session is full.</p>
+            </div>
+            :
+            <div className="mt-6 space-y-4 text-center text-sm opacity-70">
+              <p>Registration is closed. This session has already started.</p>
 
-            {session.workshopResourcesLink && (
-              <Button className="w-full">
-                <a
-                  href={`/${session.workshopResourcesLink}`}
-                  download
-                  className=""
-                >
-                  Download workshop resources
-                </a>
-              </Button>
-            )}
-          </div>
+
+              {(session.workshopResourcesLink) && (
+                <Button className="w-full">
+                  <a
+                    href={`/${session.workshopResourcesLink}`}
+                    download
+                    className=""
+                  >
+                    Download workshop resources
+                  </a>
+                </Button>
+              )}
+            </div>
         )}
       </DialogContent>
 

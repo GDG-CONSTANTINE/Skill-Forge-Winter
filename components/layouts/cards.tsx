@@ -1,21 +1,10 @@
 import { default as workshops } from "@/data/workshops"
 import { Button } from "../ui/button"
 import SessionDialog from "../join-session/session-dialog"
-import { useWorkshopState } from "@/store/workshopStore";
+import useGetWorkshopState from "@/hooks/useGetWorkshopState";
 
 function Cards() {
-  // fetch count
-  const { workshopsCount } = useWorkshopState();
-
-  const getWorkshopState = (workshopId: string) => {
-    console.log(workshopsCount)
-    const targetWorkshop = workshopsCount.find((item: { workshopId: string; count: number }) => item.workshopId === workshopId)
-    // in case the workshop doesn't have any applying yet
-    if (!targetWorkshop)
-      return 0
-
-    return targetWorkshop.count
-  }
+  const { getWorkshopState } = useGetWorkshopState();
 
   return (
     <div className="w-full mt-10">
@@ -42,7 +31,6 @@ function Cards() {
           </div>
           <SessionDialog session={workshop}>
             <Button
-              disabled={!workshopAvailable}
               className="mt-4 w-full cursor-pointer">
               {
                 workshopAvailable

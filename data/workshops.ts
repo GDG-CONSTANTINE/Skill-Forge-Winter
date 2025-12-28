@@ -14,7 +14,7 @@ const data: workshopType[] = [
     title: "Git and GitHub",
     description:
       "Learn the fundamentals of version control using Git and GitHub, including branching, merging, and collaboration workflows.",
-    date: "2025-12-29",
+    date: "2025-12-28",
     time: "1:00 PM - 2:30 PM",
     location: "Socode School, Constantine",
     logo: gitGithub,
