@@ -30,7 +30,7 @@ function SessionDialog({
       <DialogContent className="overflow-y-scroll rounded-md max-xl:h-full">
         <Header session={session} />
 
-        {!started && workshopAvailable ? (
+        {!started || workshopAvailable ? (
           <RegistrationForm workshop={session} />
         ) : (
           !started ?
