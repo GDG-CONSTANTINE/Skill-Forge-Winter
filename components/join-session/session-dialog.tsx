@@ -19,7 +19,9 @@ function SessionDialog({
 }) {
   const started = hasSessionStarted(session.date, session.time);
   const { getWorkshopState } = useGetWorkshopState()
-  const workshopAvailable = getWorkshopState(session.id) < 25;
+  const workshopAvailable = session.location.toLowerCase().startsWith("online")
+    ? getWorkshopState(session.id) < 50
+    : getWorkshopState(session.id) < 25;
 
   return (
     <Dialog>

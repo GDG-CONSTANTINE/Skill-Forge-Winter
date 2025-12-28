@@ -95,6 +95,7 @@ async function GET(request: NextRequest) {
         $group: {
           _id: "$workshopId",
           count: { $sum: 1 },
+          registrants: { $push: { fullname: "$fullname", email: "$email" } },
         },
       },
       {
@@ -105,6 +106,7 @@ async function GET(request: NextRequest) {
           _id: 0,
           workshopId: "$_id",
           count: 1,
+          registrants: 1,
         },
       },
     ]);
@@ -114,9 +116,9 @@ async function GET(request: NextRequest) {
       {
         success: true,
         data: count,
-        message: "Registration fetch successfully",
+        message: "Registrations fetched successfully",
       },
-      { status: 201 }
+      { status: 200 }
     );
   } catch (error) {
     console.error("Error fetching registrations count:", error);
