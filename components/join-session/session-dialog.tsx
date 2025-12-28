@@ -29,7 +29,7 @@ function SessionDialog({
         {children}
       </DialogTrigger>
 
-      <DialogContent className="overflow-y-scroll rounded-md md:h-full">
+      <DialogContent className="overflow-y-scroll rounded-md max-xl:h-full">
         <Header session={session} />
 
         {!started ? (

@@ -1,4 +1,5 @@
 "use client"
+
 import Cards from "@/components/layouts/cards";
 import Footer from "@/components/layouts/footer";
 import Header from "@/components/layouts/header";
@@ -20,7 +21,7 @@ export default function Home() {
       <HomeLayout>
         <Header />
         {!isLoading
-        ? < Cards />
+        ? <Cards />
         : <LoadingPlaceHolder />}
         <Footer />
       </HomeLayout>
