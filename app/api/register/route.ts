@@ -22,12 +22,12 @@ async function POST(request: NextRequest) {
       workshopId: data.workshopId,
     });
 
-    if (workshopJoiningCount >= 30) {
-      return NextResponse.json(
-        { error: "No more places left in the workshop" },
-        { status: 400 }
-      );
-    }
+    // if (workshopJoiningCount >= 30) {
+    //   return NextResponse.json(
+    //     { error: "No more places left in the workshop" },
+    //     { status: 400 }
+    //   );
+    // }
 
     // Validate required fields
     if (
