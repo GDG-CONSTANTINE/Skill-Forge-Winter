@@ -10,7 +10,7 @@ function Cards() {
     <div className="w-full mt-10">
       {workshops.map((workshop) => {
         const isOnline = workshop.location.toLowerCase().startsWith("online");
-        const limit = isOnline ? 50 : 25;
+        const limit = isOnline ? 75 : 25;
         const workshopAvailable = getWorkshopState(workshop.id) < limit;
 
         // Component
@@ -35,10 +35,10 @@ function Cards() {
             <Button
               className="mt-4 w-full cursor-pointer">
               {
-                // If workshop title starts with "onle", use 50 as the limit, else 25
+                // If workshop title starts with "onle", use 75 as the limit, else 25
                 (() => {
                   const isOnline = workshop.location.toLowerCase().startsWith("online");
-                  const limit = isOnline ? 50 : 25;
+                  const limit = isOnline ? 75 : 25;
                   return workshopAvailable || isOnline
                     ? `Join Session ${getWorkshopState(workshop.id)}/${limit}`
                     : "Sorry Workshop is Full";
