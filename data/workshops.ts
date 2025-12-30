@@ -27,6 +27,7 @@ const data: workshopType[] = [
       bio: "Web Developer | UI/UX Designer",
       photo: abdeldjallil,
     },
+    workshopResourcesLink: "gsap-react-workshop.rar",
   },
   {
     id: "workshop-4",

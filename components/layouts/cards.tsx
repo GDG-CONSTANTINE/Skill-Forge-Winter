@@ -12,9 +12,15 @@ function Cards() {
         const isOnline = workshop.location.toLowerCase().startsWith("online");
         const limit = isOnline ? 75 : 25;
         const workshopAvailable = getWorkshopState(workshop.id) < limit;
+        const workshopDate = new Date(workshop.date);
+        const now = new Date();
+        const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const workshopMidnight = new Date(workshopDate.getFullYear(), workshopDate.getMonth(), workshopDate.getDate());
+        const diffDays = Math.floor((todayMidnight.getTime() - workshopMidnight.getTime()) / (1000 * 60 * 60 * 24));
+        const isOld = diffDays >= 1;
 
         // Component
-        return (<div key={workshop.id} className="mb-8 p-6 border-3 border-foreground/70 bg-white shadow-sm w-full relative">
+        return (<div key={workshop.id} className={`mb-8 p-6 border-3 border-foreground/70 bg-white shadow-sm w-full relative ${isOld ? 'opacity-40' : ''}`}>
           {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position) => (
             <div
               key={position}
