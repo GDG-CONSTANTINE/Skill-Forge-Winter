@@ -4,45 +4,15 @@ import modernBackend from "@/assets/modern-backend.svg";
 import aiCompanion from "@/assets/ai-companion.svg";
 import reactGsap from "@/assets/react-gsap.svg";
 import explainableAi from "@/assets/explainableAi.svg";
+import BuildSmartAgents from "@/assets/BuildSmartAgents.svg";
 import abdeldjallil from "@/assets/abd-eldjallil.jpg";
 import mouad from "@/assets/mouad.jpg";
 import gbemisola from "@/assets/gbemisola.jpg";
 import asma from "@/assets/asma.jpeg";
+import amel from "@/assets/amel.jpg";
 import pic from "@/assets/pic.png";
 
 const data: workshopType[] = [
-  {
-    id: "workshop-1",
-    title: "Git and GitHub",
-    description:
-      "Learn the fundamentals of version control using Git and GitHub, including branching, merging, and collaboration workflows.",
-    date: "2025-12-29",
-    time: "1:00 PM - 2:30 PM",
-    location: "Socode School, Constantine",
-    logo: gitGithub,
-    instructor: {
-      name: "Abd eldjallil Meskali",
-      bio: "Web Developer | UI/UX Designer",
-      photo: abdeldjallil,
-    },
-    workshopResourcesLink: "git-workshop.rar",
-  },
-
-  {
-    id: "workshop-2",
-    title: "How Modern Backends work, Design to Production",
-    description:
-      "This workshop gives a clear, practical overview of how modern backend systems work from designing APIs to running them in production using Node.js. Participants will explore backend architecture, understand Node.js and Express.js, build CRUD flows, and learn the basics of deployment.",
-    date: "2025-12-30",
-    time: "2:00 PM - 4:00 PM",
-    location: "Socode School, Constantine",
-    logo: modernBackend,
-    instructor: {
-      name: "Mouad Amireche",
-      bio: "Back-end Developer",
-      photo: mouad,
-    },
-  },
   {
     id: "workshop-3",
     title: "Animating the Web: A Hands-on React + GSAP",
@@ -86,6 +56,52 @@ const data: workshopType[] = [
       name: "Asma Merabet",
       bio: "Backend and AI engineer at deepminds, AI researcher, PhD student, GDE in AI, GDG Setif Organizer",
       photo: asma,
+    },
+  },
+  {
+    id: "workshop-7",
+    title: "How to Build Smart Agents with Google Agents Development Kit - ADK",
+    description:
+      "Have you ever wondered how smart agents are transforming our digital interactions every day? Join us for another eye-opening online workshop as part of our Skill Forge: Winter Code Camp, where you will learn how to transition from monolithic AI prompts to modular multi-agent systems using Google’s Agent Development Kit (ADK).",
+    date: "2026-1-2",
+    time: "20:00 - 21:30",
+    location: "Online",
+    logo: BuildSmartAgents,
+    instructor: {
+      name: "Amel Sellami",
+      bio: "Research Engineer at InstaDeep, & Google Developer Expert in ML",
+      photo: amel,
+    },
+  },
+  {
+    id: "workshop-1",
+    title: "Git and GitHub",
+    description:
+      "Learn the fundamentals of version control using Git and GitHub, including branching, merging, and collaboration workflows.",
+    date: "2025-12-29",
+    time: "1:00 PM - 2:30 PM",
+    location: "Socode School, Constantine",
+    logo: gitGithub,
+    instructor: {
+      name: "Abd eldjallil Meskali",
+      bio: "Web Developer | UI/UX Designer",
+      photo: abdeldjallil,
+    },
+    workshopResourcesLink: "git-workshop.rar",
+  },
+  {
+    id: "workshop-2",
+    title: "How Modern Backends work, Design to Production",
+    description:
+      "This workshop gives a clear, practical overview of how modern backend systems work from designing APIs to running them in production using Node.js. Participants will explore backend architecture, understand Node.js and Express.js, build CRUD flows, and learn the basics of deployment.",
+    date: "2025-12-30",
+    time: "2:00 PM - 4:00 PM",
+    location: "Socode School, Constantine",
+    logo: modernBackend,
+    instructor: {
+      name: "Mouad Amireche",
+      bio: "Back-end Developer",
+      photo: mouad,
     },
   },
 ];
