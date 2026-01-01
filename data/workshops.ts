@@ -14,22 +14,6 @@ import pic from "@/assets/pic.png";
 
 const data: workshopType[] = [
   {
-    id: "workshop-3",
-    title: "Animating the Web: A Hands-on React + GSAP",
-    description:
-      "Learn the fundamentals of React and GSAP to build dynamic, animated user interfaces. Create smooth load and scroll-based animations while understanding how logic and motion work together.",
-    date: "2025-12-31",
-    time: "1:00 PM - 3:00 PM",
-    location: "Socode School, Constantine",
-    logo: reactGsap,
-    instructor: {
-      name: "Abd eldjallil Meskali",
-      bio: "Web Developer | UI/UX Designer",
-      photo: abdeldjallil,
-    },
-    workshopResourcesLink: "gsap-react-workshop.rar",
-  },
-  {
     id: "workshop-4",
     title: "Build Your First AI Companion",
     description:
@@ -42,21 +26,6 @@ const data: workshopType[] = [
       name: "Gbemisola Esho",
       bio: "Founder Connectobridge | Cloud Security Engineer | Google Developer Expert Cloud (GDE)",
       photo: gbemisola,
-    },
-  },
-  {
-    id: "workshop-6",
-    title: "Explainable AI in Healthcare",
-    description:
-      "A concise introduction to Explainable AI (XAI) for healthcare: why explainability matters, key techniques like Grad-CAM and feature attribution, and practical medical imaging examples to improve transparency and clinical trust.",
-    date: "2025-12-31",
-    time: "19:00 - 20:30",
-    location: "Online",
-    logo: explainableAi,
-    instructor: {
-      name: "Asma Merabet",
-      bio: "Backend and AI engineer at deepminds, AI researcher, PhD student, GDE in AI, GDG Setif Organizer",
-      photo: asma,
     },
   },
   {
@@ -103,6 +72,37 @@ const data: workshopType[] = [
       name: "Mouad Amireche",
       bio: "Back-end Developer",
       photo: mouad,
+    },
+  },
+  {
+    id: "workshop-3",
+    title: "Animating the Web: A Hands-on React + GSAP",
+    description:
+      "Learn the fundamentals of React and GSAP to build dynamic, animated user interfaces. Create smooth load and scroll-based animations while understanding how logic and motion work together.",
+    date: "2025-12-31",
+    time: "1:00 PM - 3:00 PM",
+    location: "Socode School, Constantine",
+    logo: reactGsap,
+    instructor: {
+      name: "Abd eldjallil Meskali",
+      bio: "Web Developer | UI/UX Designer",
+      photo: abdeldjallil,
+    },
+    workshopResourcesLink: "gsap-react-workshop.rar",
+  },
+  {
+    id: "workshop-6",
+    title: "Explainable AI in Healthcare",
+    description:
+      "A concise introduction to Explainable AI (XAI) for healthcare: why explainability matters, key techniques like Grad-CAM and feature attribution, and practical medical imaging examples to improve transparency and clinical trust.",
+    date: "2025-12-31",
+    time: "19:00 - 20:30",
+    location: "Online",
+    logo: explainableAi,
+    instructor: {
+      name: "Asma Merabet",
+      bio: "Backend and AI engineer at deepminds, AI researcher, PhD student, GDE in AI, GDG Setif Organizer",
+      photo: asma,
     },
   },
 ];
