@@ -2,6 +2,8 @@ import { default as workshops } from "@/data/workshops"
 import { Button } from "../ui/button"
 import SessionDialog from "../join-session/session-dialog"
 import useGetWorkshopState from "@/hooks/useGetWorkshopState";
+import { isStartingSoonOrStarted } from "@/lib/helper";
+import Link from "next/link";
 
 function Cards() {
   const { getWorkshopState } = useGetWorkshopState();
@@ -10,7 +12,7 @@ function Cards() {
     <div className="w-full mt-10">
       {workshops.map((workshop) => {
         const isOnline = workshop.location.toLowerCase().startsWith("online");
-        const limit = isOnline ? 75 : 25;
+        const limit = isOnline ? 100 : 25;
         const workshopAvailable = getWorkshopState(workshop.id) < limit;
         const workshopDate = new Date(workshop.date);
         const now = new Date();
@@ -18,6 +20,7 @@ function Cards() {
         const workshopMidnight = new Date(workshopDate.getFullYear(), workshopDate.getMonth(), workshopDate.getDate());
         const diffDays = Math.floor((todayMidnight.getTime() - workshopMidnight.getTime()) / (1000 * 60 * 60 * 24));
         const isOld = diffDays >= 1;
+        const { started, withinThreshold } = isStartingSoonOrStarted(workshop.date, workshop.time)
 
         // Component
         return (<div key={workshop.id} className={`mb-8 p-6 border-3 border-foreground/70 bg-white shadow-sm w-full relative ${isOld ? 'opacity-40' : ''}`}>
@@ -37,14 +40,22 @@ function Cards() {
             <p><strong>Time:</strong><br /> {workshop.time}</p>
             <p><strong>Location:</strong><br /> {workshop.location}</p>
           </div>
+
+          {workshop.meetingLink && withinThreshold && (
+            <Link href={workshop.meetingLink} target="_blank" rel="noopener noreferrer">
+              <Button className="cursor-pointer mt-4 w-full">
+                {workshop.meetingLink ? "Session Link Available" : "Link Not Available"}
+              </Button>
+            </Link>
+          )}
+
           <SessionDialog session={workshop}>
-            <Button
-              className="mt-4 w-full cursor-pointer">
+            <Button variant={started ? "outline" : "default"} className="mt-4 w-full cursor-pointer">
               {
-                // If workshop title starts with "onle", use 75 as the limit, else 25
+                // If workshop title starts with "onle", use 100 as the limit, else 25
                 (() => {
                   const isOnline = workshop.location.toLowerCase().startsWith("online");
-                  const limit = isOnline ? 75 : 25;
+                  const limit = isOnline ? 100 : 25;
                   return workshopAvailable || isOnline
                     ? `Join Session ${getWorkshopState(workshop.id)}/${limit}`
                     : "Sorry Workshop is Full";

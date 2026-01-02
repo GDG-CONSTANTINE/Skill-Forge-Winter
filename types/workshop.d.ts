@@ -12,4 +12,5 @@ export type workshopType = {
     photo: StaticImageData | string;
   };
   workshopResourcesLink?: string;
+  meetingLink?: string;
 };
