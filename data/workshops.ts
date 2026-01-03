@@ -14,22 +14,6 @@ import pic from "@/assets/pic.png";
 
 const data: workshopType[] = [
   {
-    id: "workshop-7",
-    title: "How to Build Smart Agents with Google Agents Development Kit - ADK",
-    description:
-      "Have you ever wondered how smart agents are transforming our digital interactions every day? Join us for another eye-opening online workshop as part of our Skill Forge: Winter Code Camp, where you will learn how to transition from monolithic AI prompts to modular multi-agent systems using Google’s Agent Development Kit (ADK).",
-    date: "2026-1-2",
-    time: "20:00 - 21:30",
-    location: "Online",
-    logo: BuildSmartAgents,
-    instructor: {
-      name: "Amel Sellami",
-      bio: "Research Engineer at InstaDeep, & Google Developer Expert in ML",
-      photo: amel,
-    },
-    meetingLink: "https://meet.google.com/nme-xngb-ktq",
-  },
-  {
     id: "workshop-4",
     title: "Build Your First AI Companion",
     description:
@@ -43,6 +27,7 @@ const data: workshopType[] = [
       bio: "Founder Connectobridge | Cloud Security Engineer | Google Developer Expert Cloud (GDE)",
       photo: gbemisola,
     },
+    meetingLink: "https://meet.google.com/nme-xngb-ktq",
   },
   {
     id: "workshop-1",
@@ -105,6 +90,22 @@ const data: workshopType[] = [
       bio: "Backend and AI engineer at deepminds, AI researcher, PhD student, GDE in AI, GDG Setif Organizer",
       photo: asma,
     },
+  },
+  {
+    id: "workshop-7",
+    title: "How to Build Smart Agents with Google Agents Development Kit - ADK",
+    description:
+      "Have you ever wondered how smart agents are transforming our digital interactions every day? Join us for another eye-opening online workshop as part of our Skill Forge: Winter Code Camp, where you will learn how to transition from monolithic AI prompts to modular multi-agent systems using Google’s Agent Development Kit (ADK).",
+    date: "2026-1-2",
+    time: "20:00 - 21:30",
+    location: "Online",
+    logo: BuildSmartAgents,
+    instructor: {
+      name: "Amel Sellami",
+      bio: "Research Engineer at InstaDeep, & Google Developer Expert in ML",
+      photo: amel,
+    },
+    meetingLink: "https://meet.google.com/nme-xngb-ktq",
   },
 ];
 
